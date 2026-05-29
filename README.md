@@ -24,7 +24,7 @@ The provider SDK is an **optional peer dependency** — install only the one you
 
 ```ts
 import express from 'express';
-import { anyFormat } from 'any-shape-middleware';
+import { anyShape } from 'any-shape-middleware';
 import { z } from 'zod';
 
 const userSchema = z.object({
@@ -37,12 +37,12 @@ const userSchema = z.object({
 const app = express();
 app.use(express.json());
 
-app.post('/user', anyFormat(userSchema), (req, res) => {
+app.post('/user', anyShape(userSchema), (req, res) => {
   res.json(req.body); // already typed and validated
 });
 
 // per-route: skip the verification/fact-check pass (one LLM call instead of two on slow path)
-app.post('/user-fast', anyFormat(userSchema, { skipVerification: true }), (req, res) => {
+app.post('/user-fast', anyShape(userSchema, { skipVerification: true }), (req, res) => {
   res.json(req.body);
 });
 
@@ -79,12 +79,12 @@ Plus the provider's API key env var (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOO
 Pass any `LanguageModel` from the AI SDK explicitly:
 
 ```ts
-import { anyFormat, createAnyFormatService } from 'any-shape';
+import { anyShape, createanyShapeService } from 'any-shape';
 import { openai } from '@ai-sdk/openai';
 
 app.post(
   '/user',
-  anyFormat(userSchema, {
+  anyShape(userSchema, {
     model: openai('gpt-4o'),
   }),
   handler,
@@ -94,7 +94,7 @@ app.post(
 You can also skip verification per route call:
 
 ```ts
-app.post('/user', anyFormat(userSchema, { skipVerification: true }), handler);
+app.post('/user', anyShape(userSchema, { skipVerification: true }), handler);
 ```
 
 ## How it works
