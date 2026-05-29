@@ -1,0 +1,63 @@
+{
+  "name": "any-shape-middleware",
+  "version": "0.9.0",
+  "description": "Express middleware that reshapes any payload to fit your zod schema using an LLM, with a hallucination guard.",
+  "keywords": [
+    "express",
+    "middleware",
+    "zod",
+    "llm",
+    "ai",
+    "schema",
+    "validation",
+    "any-format"
+  ],
+  "license": "MIT",
+  "author": "tony1704",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@ai-sdk/anthropic": "^3.0.0",
+    "@ai-sdk/google": "^3.0.0",
+    "@ai-sdk/openai": "^3.0.0",
+    "ai": "^6.0.0",
+    "express": "^4.0.0 || ^5.0.0",
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@ai-sdk/anthropic": {
+      "optional": true
+    },
+    "@ai-sdk/google": {
+      "optional": true
+    },
+    "@ai-sdk/openai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@ai-sdk/openai": "^3.0.64",
+    "@types/express": "^4.17.21",
+    "ai": "^6.0.185",
+    "express": "^4.21.2",
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3"
+  }
+}

@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="100%" role="img" aria-label="any-shape middleware flow: a malformed payload is reshaped by an LLM, fact-checked, and delivered to your handler matching your zod schema.">
+  <style>
+    .ui { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    text { fill: #24292f; font-size: 13px; }
+    .title { font-weight: 700; font-size: 14px; }
+    .sub { font-size: 11px; }
+    .muted { fill: #6e7781; }
+    .danger { fill: #cf222e; }
+    .success { fill: #1a7f37; }
+    .accent { fill: #0969da; }
+    .box { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1.5; }
+    .step { fill: #ffffff; stroke: #d0d7de; stroke-width: 1; }
+    .arrow { stroke: #6e7781; stroke-width: 2; fill: none; }
+    .ahfill { fill: #6e7781; }
+    .pulse-dot { fill: #0969da; }
+
+    @media (prefers-color-scheme: dark) {
+      text { fill: #c9d1d9; }
+      .muted { fill: #8b949e; }
+      .danger { fill: #ff7b72; }
+      .success { fill: #7ee787; }
+      .accent { fill: #58a6ff; }
+      .box { fill: #0d1117; stroke: #30363d; }
+      .step { fill: #161b22; stroke: #30363d; }
+      .arrow { stroke: #8b949e; }
+      .ahfill { fill: #8b949e; }
+      .pulse-dot { fill: #58a6ff; }
+    }
+  </style>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="ahfill" />
+    </marker>
+  </defs>
+
+  <line class="arrow" x1="285" y1="190" x2="345" y2="190" marker-end="url(#ah)" />
+  <line class="arrow" x1="630" y1="190" x2="690" y2="190" marker-end="url(#ah)" />
+
+  <circle r="4" class="pulse-dot" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.20;0.30;0.32;1" dur="7s" repeatCount="indefinite" />
+    <animate attributeName="cx" values="285;285;345;345" keyTimes="0;0.18;0.32;1" dur="7s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="190;190;190;190" keyTimes="0;0.18;0.32;1" dur="7s" repeatCount="indefinite" />
+  </circle>
+  <circle r="4" class="pulse-dot" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.74;0.76;1" dur="7s" repeatCount="indefinite" />
+    <animate attributeName="cx" values="630;630;690;690" keyTimes="0;0.62;0.76;1" dur="7s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="190;190;190;190" keyTimes="0;0.62;0.76;1" dur="7s" repeatCount="indefinite" />
+  </circle>
+
+  <g>
+    <rect class="box" x="20" y="40" width="265" height="300" rx="10">
+      <animate attributeName="stroke"
+        values="#d0d7de;#cf222e;#cf222e;#d0d7de;#d0d7de"
+        keyTimes="0;0.05;0.20;0.25;1"
+        dur="7s" repeatCount="indefinite" />
+    </rect>
+    <text class="ui title" x="36" y="68">Incoming request</text>
+    <text class="ui sub muted" x="36" y="84">field names don't match schema</text>
+
+    <text class="mono" x="36" y="120">{</text>
+    <text class="mono" x="50" y="142"><tspan class="danger">"userId"</tspan><tspan class="muted">:</tspan> "u1",</text>
+    <text class="mono" x="50" y="162"><tspan class="danger">"fullName"</tspan><tspan class="muted">:</tspan> "Ada Lovelace",</text>
+    <text class="mono" x="50" y="182"><tspan class="danger">"yearsOld"</tspan><tspan class="muted">:</tspan> 36,</text>
+    <text class="mono" x="50" y="202"><tspan class="danger">"emailAddress"</tspan><tspan class="muted">:</tspan></text>
+    <text class="mono" x="62" y="222">"ada@example.com"</text>
+    <text class="mono" x="36" y="242">}</text>
+
+    <text class="ui danger" x="36" y="295" font-weight="600" opacity="0">✗  zod.safeParse fails
+      <animate attributeName="opacity" values="0;0;1;1;1" keyTimes="0;0.16;0.20;0.95;1" dur="7s" repeatCount="indefinite" />
+    </text>
+  </g>
+
+  <g>
+    <rect class="box" x="345" y="40" width="285" height="300" rx="10">
+      <animate attributeName="stroke"
+        values="#d0d7de;#d0d7de;#0969da;#0969da;#d0d7de;#d0d7de"
+        keyTimes="0;0.22;0.27;0.62;0.67;1"
+        dur="7s" repeatCount="indefinite" />
+    </rect>
+    <text class="ui title" x="361" y="68">any-shape middleware</text>
+    <text class="ui sub muted" x="361" y="84">reshape, then fact-check</text>
+
+    <g opacity="0.25">
+      <animate attributeName="opacity"
+        values="0.25;0.25;1;1;1;1;1"
+        keyTimes="0;0.22;0.28;0.4;0.6;0.85;1"
+        dur="7s" repeatCount="indefinite" />
+      <rect class="step" x="361" y="108" width="253" height="38" rx="6" />
+      <text class="ui" x="378" y="132"><tspan class="danger" font-weight="700">✗</tspan>   zod schema check</text>
+    </g>
+
+    <g opacity="0.25">
+      <animate attributeName="opacity"
+        values="0.25;0.25;0.25;1;1;1;1"
+        keyTimes="0;0.22;0.32;0.36;0.6;0.85;1"
+        dur="7s" repeatCount="indefinite" />
+      <rect class="step" x="361" y="158" width="253" height="38" rx="6" />
+      <text class="ui" x="378" y="182"><tspan class="accent" font-weight="700">→</tspan>   LLM reshapes payload</text>
+    </g>
+
+    <g opacity="0.25">
+      <animate attributeName="opacity"
+        values="0.25;0.25;0.25;0.25;1;1;1"
+        keyTimes="0;0.22;0.32;0.42;0.46;0.85;1"
+        dur="7s" repeatCount="indefinite" />
+      <rect class="step" x="361" y="208" width="253" height="38" rx="6" />
+      <text class="ui" x="378" y="232"><tspan class="accent" font-weight="700">→</tspan>   fact-check: no hallucination</text>
+    </g>
+
+    <g opacity="0.25">
+      <animate attributeName="opacity"
+        values="0.25;0.25;0.25;0.25;0.25;1;1"
+        keyTimes="0;0.22;0.32;0.42;0.52;0.56;1"
+        dur="7s" repeatCount="indefinite" />
+      <rect class="step" x="361" y="258" width="253" height="38" rx="6" />
+      <text class="ui" x="378" y="282"><tspan class="success" font-weight="700">✓</tspan>   rewrite passes zod</text>
+    </g>
+  </g>
+
+  <g>
+    <rect class="box" x="690" y="40" width="240" height="300" rx="10">
+      <animate attributeName="stroke"
+        values="#d0d7de;#d0d7de;#1a7f37;#1a7f37;#d0d7de"
+        keyTimes="0;0.66;0.71;0.95;1"
+        dur="7s" repeatCount="indefinite" />
+    </rect>
+    <text class="ui title" x="706" y="68">Your handler</text>
+    <text class="ui sub muted" x="706" y="84">req.body is typed and valid</text>
+
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;1" keyTimes="0;0.66;0.74;0.95;1" dur="7s" repeatCount="indefinite" />
+      <text class="mono" x="706" y="120">{</text>
+      <text class="mono" x="720" y="142"><tspan class="success">"id"</tspan><tspan class="muted">:</tspan> "u1",</text>
+      <text class="mono" x="720" y="162"><tspan class="success">"name"</tspan><tspan class="muted">:</tspan> "Ada Lovelace",</text>
+      <text class="mono" x="720" y="182"><tspan class="success">"age"</tspan><tspan class="muted">:</tspan> 36,</text>
+      <text class="mono" x="720" y="202"><tspan class="success">"email"</tspan><tspan class="muted">:</tspan></text>
+      <text class="mono" x="732" y="222">"ada@example.com"</text>
+      <text class="mono" x="706" y="242">}</text>
+
+      <text class="ui success" x="706" y="295" font-weight="600">✓  next()</text>
+    </g>
+  </g>
+</svg>
