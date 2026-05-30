@@ -12,7 +12,7 @@ When a payload doesn't match the schema, an LLM rewrites it to fit, a second LLM
 
 ```sh
 # Minimal install (package + AI SDK):
-npm install any-shape ai @ai-sdk/openai
+npm install any-shape-middleware ai @ai-sdk/openai
 ```
 
 The provider SDK is an **optional peer dependency** — install only the one you'll use:
